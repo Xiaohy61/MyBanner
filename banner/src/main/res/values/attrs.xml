@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+ <declare-styleable name="Banner">
+    <attr name="banner_layout" format="reference"/>
+     <attr name="dot_selected" format="reference"/>
+     <attr name="dot_un_selected" format="reference"/>
+ </declare-styleable>
+
+</resources>
