@@ -8,20 +8,42 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.skyward.banner.Banner
-        android:id="@+id/banner"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        app:dot_selected="@drawable/banner_indicator_selected"
-       />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <com.skyward.banner.Banner
-        android:id="@+id/banner2"
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginTop="20dp"
-        app:banner_layout="@layout/my_banner_layout"
+            <com.skyward.banner.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                app:dot_selected="@drawable/banner_indicator_selected"
+                />
 
-        />
+            <com.skyward.banner.Banner
+            android:id="@+id/banner2"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginTop="20dp"
+            app:banner_layout="@layout/my_banner_layout"
+
+            />
+
+            <Button
+                android:id="@+id/btn_guide"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="引导页"/>
+
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+
+
 
 </LinearLayout>

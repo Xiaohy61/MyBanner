@@ -1,6 +1,7 @@
 package com.skyward.mybanner;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private Banner mBanner;
     private List<Integer> mImageList;
     private Banner mBanner2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +87,14 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "当前位置： " + position, Toast.LENGTH_SHORT).show();
                     }
                 }).start();
+
+
+        findViewById(R.id.btn_guide).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),SplashActivity.class));
+            }
+        });
 
     }
 
