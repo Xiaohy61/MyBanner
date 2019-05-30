@@ -40,7 +40,7 @@ public class Banner extends FrameLayout {
     private static Handler mHandler = new Handler();
     private int delayTime = 3000;
     private LinearLayout llDot;
-    private BannerItemClickListener mItemClickListener;
+    private OnItemClickListener mItemClickListener;
     private OnPageChangeListener mOnPageChangeListener;
     private int mBannerLayout = R.layout.banner_layout;
     private ViewPager.PageTransformer mTransformer = new BannerTransformer();
@@ -93,7 +93,7 @@ public class Banner extends FrameLayout {
         return this;
     }
 
-    public Banner setBannerItemClickListener(BannerItemClickListener listener) {
+    public Banner setOnItemClickListener(OnItemClickListener listener) {
         this.mItemClickListener = listener;
         return this;
     }
@@ -358,7 +358,7 @@ public class Banner extends FrameLayout {
     }
 
 
-    public interface BannerItemClickListener {
+    public interface OnItemClickListener {
         /**
          * 轮播图点击回调
          *

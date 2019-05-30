@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.i("skyward","pos: "+position);
                     }
                 })
-                .setBannerItemClickListener(new Banner.BannerItemClickListener() {
+                .setOnItemClickListener(new Banner.OnItemClickListener() {
                     @Override
                     public void onItemClick(int position, View view) {
                         Toast.makeText(getApplicationContext(), "当前位置： " + position, Toast.LENGTH_SHORT).show();
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                         return mView;
                     }
                 })
-                .setBannerItemClickListener(new Banner.BannerItemClickListener() {
+                .setOnItemClickListener(new Banner.OnItemClickListener() {
                     @Override
                     public void onItemClick(int position, View view) {
                         Toast.makeText(getApplicationContext(), "当前位置： " + position, Toast.LENGTH_SHORT).show();
