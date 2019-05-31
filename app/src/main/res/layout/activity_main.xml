@@ -20,6 +20,9 @@
                 android:id="@+id/banner"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
+                app:indicator_height="6.5dp"
+                app:indicator_width="6.5dp"
+                app:indicator_margin="2.5dp"
                 app:dot_selected="@drawable/banner_indicator_selected"
                 />
 

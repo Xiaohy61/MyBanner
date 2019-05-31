@@ -52,7 +52,9 @@ public class Banner extends FrameLayout {
     private CustomImageLoader mCustomImageLoader;
     private int pageMargin = -20;
     private int offscreenPageLimit =0;
-
+    private int indicatorHeight = LinearLayout.LayoutParams.WRAP_CONTENT;
+    private int indicatorMargin = 5;
+    private int indicatorWidth = LinearLayout.LayoutParams.WRAP_CONTENT;
 
 
     public Banner(@NonNull Context context) {
@@ -80,7 +82,9 @@ public class Banner extends FrameLayout {
         mBannerLayout = typedArray.getResourceId(R.styleable.Banner_banner_layout, mBannerLayout);
         dotUnSelected = typedArray.getResourceId(R.styleable.Banner_dot_un_selected, dotUnSelected);
         dotSelected = typedArray.getResourceId(R.styleable.Banner_dot_selected, dotSelected);
-
+        indicatorHeight = typedArray.getDimensionPixelSize(R.styleable.Banner_indicator_height, indicatorHeight);
+        indicatorMargin = typedArray.getDimensionPixelSize(R.styleable.Banner_indicator_margin, indicatorMargin);
+        indicatorWidth = typedArray.getDimensionPixelSize(R.styleable.Banner_indicator_width, indicatorWidth);
         typedArray.recycle();
     }
 
@@ -329,8 +333,9 @@ public class Banner extends FrameLayout {
         for (int i = 0; i < mImageList.size(); i++) {
 
             ImageView dotView = new ImageView(getContext());
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            params.leftMargin = dp2px(5);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(indicatorWidth, indicatorHeight);
+            params.leftMargin = indicatorMargin;
+            params.rightMargin = indicatorMargin;
             dotView.setLayoutParams(params);
 
             if (i == 0) {
