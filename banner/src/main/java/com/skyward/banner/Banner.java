@@ -51,6 +51,7 @@ public class Banner extends FrameLayout {
     private ImageLoader mImageLoader;
     private CustomImageLoader mCustomImageLoader;
     private int pageMargin = -20;
+    private int offscreenPageLimit =0;
 
 
 
@@ -131,6 +132,11 @@ public class Banner extends FrameLayout {
 
     public Banner setCustomImageLoader(CustomImageLoader customImageLoader) {
         this.mCustomImageLoader = customImageLoader;
+        return this;
+    }
+
+    public Banner setNormalBannerOffscreenPageLimit(int offscreenPageLimit){
+        this.offscreenPageLimit = offscreenPageLimit;
         return this;
     }
 
@@ -225,11 +231,15 @@ public class Banner extends FrameLayout {
     private void showBannerType() {
         if (mBannerType == BannerType.NORMAL) {
             mBannerViewPager.setCurrentItem(0);
+            mBannerViewPager.setOffscreenPageLimit(offscreenPageLimit);
         } else if (mBannerType == BannerType.OFFSET) {
             mBannerViewPager.setCurrentItem(1);
             mBannerViewPager.setOffscreenPageLimit(mImageList.size() + 4);
             mBannerViewPager.setPageTransformer(true, mTransformer);
             mBannerViewPager.setPageMargin(pageMargin);
+        }else if(mBannerType == BannerType.GUIDE_PAGES){
+            mBannerViewPager.setCurrentItem(0);
+            mBannerViewPager.setOffscreenPageLimit(mImageList.size());
         }
     }
 
