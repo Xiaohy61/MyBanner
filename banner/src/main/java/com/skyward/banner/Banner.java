@@ -83,7 +83,7 @@ public class Banner extends FrameLayout {
         typedArray.recycle();
     }
 
-    public Banner setPageMargin(int pageMargin){
+    public Banner setPageMargin(int pageMargin) {
         this.pageMargin = pageMargin;
         return this;
     }
@@ -124,12 +124,12 @@ public class Banner extends FrameLayout {
         return this;
     }
 
-    public Banner setDefaultImageLoader(ImageLoader imageLoader){
+    public Banner setDefaultImageLoader(ImageLoader imageLoader) {
         this.mImageLoader = imageLoader;
         return this;
     }
 
-    public Banner setCustomImageLoader(CustomImageLoader customImageLoader){
+    public Banner setCustomImageLoader(CustomImageLoader customImageLoader) {
         this.mCustomImageLoader = customImageLoader;
         return this;
     }
@@ -137,15 +137,14 @@ public class Banner extends FrameLayout {
     @Override
     protected void onWindowVisibilityChanged(int visibility) {
         super.onWindowVisibilityChanged(visibility);
-        if (visibility == View.VISIBLE){
+        if (visibility == View.VISIBLE) {
             //开始轮播
-            if(autoPlay){
+            if (autoPlay) {
                 startAutoPlay();
             }
-        }
-        else if(visibility == INVISIBLE || visibility == GONE){
+        } else if (visibility == INVISIBLE || visibility == GONE) {
             //停止轮播
-            if(autoPlay){
+            if (autoPlay) {
                 stopAutoPlay();
             }
         }
@@ -168,17 +167,17 @@ public class Banner extends FrameLayout {
         adapter.setAdapterImageLoader(new BannerAdapter.AdapterImageLoader() {
             @Override
             public void imageLoader(Object imagePath, ImageView imageView) {
-                if(mImageLoader != null){
-                    mImageLoader.imageLoader(getContext(),imagePath,imageView);
+                if (mImageLoader != null) {
+                    mImageLoader.imageLoader(getContext(), imagePath, imageView);
                 }
             }
         });
 
         adapter.setAdapterCustomImageLoader(new BannerAdapter.AdapterCustomImageLoader() {
             @Override
-            public View customImageLoader(ViewGroup container,Object imagePath) {
-                if(mCustomImageLoader != null){
-                    return mCustomImageLoader.customImage(container,getContext(),imagePath);
+            public View customImageLoader(ViewGroup container, Object imagePath) {
+                if (mCustomImageLoader != null) {
+                    return mCustomImageLoader.customImage(container, getContext(), imagePath);
                 }
                 return null;
             }
@@ -188,6 +187,7 @@ public class Banner extends FrameLayout {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             }
+
             @Override
             public void onPageSelected(int position) {
                 position %= mImageList.size();
@@ -196,6 +196,7 @@ public class Banner extends FrameLayout {
                     mOnPageChangeListener.onPageSelected(position, mView);
                 }
             }
+
             @Override
             public void onPageScrollStateChanged(int state) {
                 int position = mBannerViewPager.getCurrentItem();
@@ -218,7 +219,10 @@ public class Banner extends FrameLayout {
         });
 
         startAutoPlay();
+        showBannerType();
+    }
 
+    private void showBannerType() {
         if (mBannerType == BannerType.NORMAL) {
             mBannerViewPager.setCurrentItem(0);
         } else if (mBannerType == BannerType.OFFSET) {
@@ -378,18 +382,19 @@ public class Banner extends FrameLayout {
         void onPageSelected(int position, View view);
     }
 
-    public interface ImageLoader{
+    public interface ImageLoader {
         /**
          * 图片加载处理
-         * @param context context
+         *
+         * @param context   context
          * @param imagePath 图片路径
          * @param imageView imageView
          */
-        void imageLoader(Context context,Object imagePath,ImageView imageView);
+        void imageLoader(Context context, Object imagePath, ImageView imageView);
 
     }
 
-    public interface  CustomImageLoader{
-        View customImage(ViewGroup container,Context context, Object imagePath);
+    public interface CustomImageLoader {
+        View customImage(ViewGroup container, Context context, Object imagePath);
     }
 }
