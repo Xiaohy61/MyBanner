@@ -164,7 +164,6 @@ public class Banner extends FrameLayout {
 
         initDot(mImageList);
         BannerAdapter adapter = new BannerAdapter(mImageList, getContext(), mBannerType);
-        mBannerViewPager.setAdapter(adapter);
         adapter.setBannerItemClickListener(new BannerAdapter.BannerItemClick() {
             @Override
             public void onBannerItemClickListener(int position) {
@@ -227,7 +226,7 @@ public class Banner extends FrameLayout {
                 }
             }
         });
-
+        mBannerViewPager.setAdapter(adapter);
         startAutoPlay();
         showBannerType();
     }
