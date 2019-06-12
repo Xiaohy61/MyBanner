@@ -266,7 +266,7 @@ public class Banner extends FrameLayout {
                 position = mImageList.size() + 1;
                 mBannerViewPager.setCurrentItem(position, false);
             } else if (position == (mImageList.size() + 4) - 2) {
-                position = mImageList.size() - 1;
+                position = 2;
                 mBannerViewPager.setCurrentItem(position, false);
             }
         }

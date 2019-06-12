@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 }).start();
 
         mBanner2 = findViewById(R.id.banner2);
+
         mBanner2.setData(mImageList)
                 .setAutoPlay(true)
                 .setBannerType(BannerType.OFFSET)
