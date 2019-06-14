@@ -144,6 +144,8 @@ public class Banner extends FrameLayout {
         return this;
     }
 
+
+
     @Override
     protected void onWindowVisibilityChanged(int visibility) {
         super.onWindowVisibilityChanged(visibility);
@@ -299,8 +301,13 @@ public class Banner extends FrameLayout {
         @Override
         public void run() {
             if (mImageList.size() > 1 && autoPlay) {
-                int position = mBannerViewPager.getCurrentItem() + 1;
-                mBannerViewPager.setCurrentItem(position, true);
+                //这里是以防在fragment中使用，当fragment不可见时viewpager addOnPageChangeListener会失效，从而造成无限轮播失效
+                int position = mBannerViewPager.getCurrentItem();
+                setImageCurrentPosition(position);
+                //+1 开始自动轮播功能
+                int nextPosition = mBannerViewPager.getCurrentItem()+1;
+                mBannerViewPager.setCurrentItem(nextPosition, true);
+
                 mHandler.postDelayed(mRunnable, delayTime);
             }
         }
