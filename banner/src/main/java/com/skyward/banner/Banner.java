@@ -55,6 +55,7 @@ public class Banner extends FrameLayout {
     private int indicatorHeight = LinearLayout.LayoutParams.WRAP_CONTENT;
     private int indicatorMargin = 5;
     private int indicatorWidth = LinearLayout.LayoutParams.WRAP_CONTENT;
+    private int currentOffsetTypePos = 1;
 
 
     public Banner(@NonNull Context context) {
@@ -95,6 +96,11 @@ public class Banner extends FrameLayout {
 
     public Banner setAutoPlay(boolean autoPlay) {
         this.autoPlay = autoPlay;
+        return this;
+    }
+
+    public Banner setCurrentOffestTypeItem(int currentOffsetTypePos){
+        this.currentOffsetTypePos = currentOffsetTypePos;
         return this;
     }
 
@@ -238,7 +244,7 @@ public class Banner extends FrameLayout {
             mBannerViewPager.setCurrentItem(0);
             mBannerViewPager.setOffscreenPageLimit(offscreenPageLimit);
         } else if (mBannerType == BannerType.OFFSET) {
-            mBannerViewPager.setCurrentItem(1);
+            mBannerViewPager.setCurrentItem(currentOffsetTypePos);
             mBannerViewPager.setOffscreenPageLimit(mImageList.size() + 4);
             mBannerViewPager.setPageTransformer(true, mTransformer);
             mBannerViewPager.setPageMargin(pageMargin);
